@@ -44,8 +44,11 @@
             </div>
 
             <!-- Data Table -->
-            <div class="col-md-9"> <!--give you adjust the position of table-->
+            <div class="col-md-9">
                 <h2>Data Table Example</h2>
+                <div class="mb-3">
+                    <button id="toggleEmail" class="btn btn-primary">Toggle Email Column</button>
+                </div>
                 <table id="example" class="table table-striped">
                     <thead>
                         <tr>
@@ -96,7 +99,12 @@
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('#example').DataTable();
+            var table = $('#example').DataTable();
+
+            $('#toggleEmail').on('click', function () {
+                var column = table.column(1); // Index of the Email column
+                column.visible(!column.visible());
+            });
         });
     </script>
 </body>
